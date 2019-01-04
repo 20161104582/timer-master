@@ -16,18 +16,9 @@ class ViewController: UIViewController {
     var timer = Timer()
     var isPlaying = false
     
-    func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.lightContent
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        timeLabel.text = String(counter)
-    }
-    
     @IBAction func resetButtonDidTouch(_ sender: UIButton) {
         timer.invalidate()
-        isPlaying = false
+            isPlaying = false
         counter = 0
         timeLabel.text = String(counter)
         playBtn.isEnabled = true
@@ -47,18 +38,13 @@ class ViewController: UIViewController {
     @IBAction func pauseButtonDidTouch(_ sender: UIButton) {
         playBtn.isEnabled = true
         pauseBtn.isEnabled = false
-        timer.invalidate()
+        timer.invalidate()//停止计数器
         isPlaying = false
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+    //定义一个计时器计时结束时，触发的处理方法，一定要在方法前加@objc
     @objc func UpdateTimer() {
         counter = counter + 0.1
         timeLabel.text = String(format: "%.1f", counter)
-        
     }
     
 
